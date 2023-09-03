@@ -3,60 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHero-tube</title>
-    <link rel="shortcut icon" href="Icon.png" type="image/x-icon">
+    <title> PH Tube </title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    .Inter{
+        font-family: 'Inter', sans-serif;;
+    }
+</style>
+
 </head>
-<body>
-    <header>
-        <div class="container mx-auto my-14 flex justify-between">
-            <div>
-                <img src="./Logo.png" alt="">
+<body class="Inter">
+   <section class="mt-6  max-w-6xl mx-auto ">
+    <nav class=" w-full mb-10   ">
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+               <img src="Logo.png"> 
             </div>
-            <div>
-                <button class="btn text-[#252525] md:text-xl">Sort by view</button>
+            <div class="navbar-center  lg:flex">
+                <button onclick="sortByView()"    class="btn btn-primary">Sort By View</button>
             </div>
-     <div class="dropdown dropdown-end">
-                <label tabindex="0" class="">
-                  <button class="btn btn bg-[#FF1F3D] text-white text-xl">Blog</button>
-                </label>
-                <ul tabindex="0" class="mt-3 z-[1] shadow menu menu-sm dropdown-content rounded-box w-52  text-3xl md:text-[red] p-6 gap-4">
-                  <li class="justify-between">
-                      var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.
-                  </li>
-                  <li>Null is generally used to represent an intentional absence or lack of value, while undefined typically represents an unintentional absence or lack of value, often due to variables or properties not being initialized or defined.</li>
-                  <li>REST APIs are commonly used for building web services, allowing different applications to interact with each other over the internet. They have become a fundamental architectural style for building distributed and scalable systems, particularly in web development.</li>
-                </ul>
-              </div>
-        </div>
-    </header>
+            <div class="navbar-end">
+              <a href="blogbutton.html" class="btn hover:bg-[#FF1F3D] hover:text-white  ">Blog</a>
+            </div>
+          </div>
+
+    </nav>
+    <div class="border-2 border-gray-300 w-auto"> </div>
+   </section>
     <main>
-        <div id="categorie_container" class="container mx-auto my-12 text-center flex justify-center gap-6">
-
-        </div>
-
-        <div id="AllCategory_information-container" class="container md:mx-auto my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-10">
-
-            <!-- <div class="card w-96 bg-base-100 shadow-xl">
-                <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                <div class="card-body">
-                  <h2 class="card-title">
-                    Shoes!
-                    <div class="badge badge-secondary">NEW</div>
-                  </h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
-                  <div class="card-actions justify-end">
-                    <div class="badge badge-outline">Fashion</div> 
-                    <div class="badge badge-outline">Products</div>
+       
+            <div class="tab-container mt-6  max-w-6xl mx-auto ">
+                <div id="tab-container"  class="   p-5   flex    gap-4 justify-center ">
+                    
                   </div>
-                </div>
-              </div> -->
-        </div>
+            </div>
+            <div id="card-container" class="  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-6  max-w-6xl mx-auto relative  pl-20 md:pl-0 lg:pl-0 "  >
+
+
+            </div>
+            <section class="mt-16 hidden" id="drawing-section">
+              <div class=" flex justify-center items-center flex-col gap-5"> 
+                <img src="Icon.png" alt="">
+                <h1 class="text-3xl text-center font-semibold">Oops!! Sorry, There is no ,<br> content here</h1>
+
+              </div>
+             </section>
+
+
     </main>
-    
-
-
     <script src="first.js"></script>
+    
 </body>
 </html>

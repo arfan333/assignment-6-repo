@@ -1,51 +1,165 @@
+const loadCategories= async()=>{
+  const res = await fetch('https://openapi.programming-hero.com/api/videos/categories')
+  const data = await res.json();
+ const categories = data.data;
+ 
+ const tabContainer = document.getElementById('tab-container')
 
+ 
+ categories.forEach((category) => {
+     // console.log(category);
+     const div = document.createElement('div')
+     div.innerHTML=`
+     <a  onclick="loadVideos('${category.category_id}')"  class="btn hover:bg-[#FF1F3D] hover:text-white ">${category.category}</a>
+     `;
+     
+     tabContainer.appendChild( div)
+ });   
 
+};
 
-const loadAllCategory = async() => {
-    const response = await fetch("https://openapi.programming-hero.com/api/videos/categories")
-    const data = await response.json()
+const loadVideos=async(categoryId)=>{
+ 
+ 
+  const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
+  const data = await res.json();
+  const cardContainer = document.getElementById('card-container')
 
-    const getCategorie_Container = document.getElementById("categorie_container")
-    data.data.forEach((category) => {
-        const div = document.createElement("div")
-        div.innerHTML = `
-        <a onclick="loadAllCategory_information('${category.category_id}')" class="tab md:text-3xl"> 
-        ${category.category}
-        </a>
-        `
-        getCategorie_Container.appendChild(div)
-    });
-    // console.log(data.data);
-}
+  cardContainer.textContent=""
+let error =document.getElementById('drawing-section')
 
-const loadAllCategory_information = async (categoryId) =>{
-    // console.log(categoryId);
-    const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
-    const data = await response.json()
-    const getContent_container = document.getElementById("AllCategory_information-container")
-    getContent_container.innerHTML = ""
-    data.data?.forEach((datas)=> {
-        console.log(datas);
-        const div = document.createElement("div")
-        div.innerHTML = `
-        <div class="card md:w-96 bg-base-100 md:shadow-xl">
-        <figure><img class="w-[312px] h-[200px]" src=${datas?.thumbnail}
-        /></figure>
-        <a class="tab text-2xl bg-slate-700 text-[white] -mt-9">${datas?.others?.posted_date}</a>
-        <div class="card-body flex text-center">
-          <img class="rounded-full w-[40px] h-[40px]" src=
-                ${datas?.authors[0]?.profile_picture}   
-          />
-          <p class=" text-2xl"> ${datas?.title}</p>
-          <p class=" text-xl">${datas?.authors[0]?.profile_name}</p>
-          <h3 class="text-2xl text-center">${datas?.others?.views? datas?.others?.views:"no views"}</h3>
+  if(data.data.length == 0 ){
+   
+    error.classList.remove('hidden')
+  }
+  else{ 
+   error.classList.add('hidden')
+ }
+ 
+  data.data?.forEach((video)=>{
+
+    //  console.log(video);
+     let videosDiv = document.createElement('div')
+     videosDiv.innerHTML= `
+     <div class="card w-64 bg-base-100 relative  shadow-xl">
+     <figure><img class="w-64  md:w-80 lg:w-full     h-48"
+         src=${video?.thumbnail}
+       /></figure>
+       <p class="absolute right-2 top-40 bg-black text-white"  > ${video.others.posted_date?secondsToHoursMinutes(video.others.posted_date): ''}</p>
+     <div class="card-body flex ">
+         <div class="flex flex-row gap-1">
+             <div>
+                 <div>
+                     <div class="avatar ">
+                       <div class="w-14 rounded-full">
+                         <img
+                           src=${video.authors[0]?.profile_picture}
+                         />
+                       </div>
+                     </div>
+                   </div>
+             </div>
+           <h2 class="card-title">
+             ${video.title}
+             
+           </h2>
+
+         </div>
+          <div >
+            <div class="flex flex-row  ">
+                 <h6> ${video.authors[0]?.profile_name}</h6>
+                ${video.authors[0]?.verified ==true?"<img src='fi_10629607.svg'/>" : '' }
+                
+             </div>
+             <p>${video.others.views} </p>
+           </div>  
         </div>
-      </div>
-        `
-        getContent_container.appendChild(div)
-    })
-// console.log(data.data);
+   </div>
+     `
+
+    
+cardContainer.appendChild(videosDiv);
+
+
+  });
+  
+ 
 }
 
-loadAllCategory()
-loadAllCategory_information("1000")
+
+function secondsToHoursMinutes(seconds) {
+var hours = Math.floor(seconds / (60 * 60));
+seconds -= hours * (60 * 60)
+var minutes = Math.floor(seconds / (60));
+seconds -= minutes * (60);
+return (hours + 'h'+ minutes + 'm ago') 
+}
+const sortByView=async()=>{
+  const res = await fetch('https://openapi.programming-hero.com/api/videos/category/1000')
+  const data = await res.json();
+  let allData=data.data
+  allData.sort((a,b)=>{
+    const viewsA = parseInt(a.others.views);
+    const viewsB = parseInt(b.others.views)
+    return viewsB - viewsA
+   
+
+  })
+  // console.log(allData)
+  const cardContainer = document.getElementById('card-container')
+  cardContainer.innerHTML = ''
+  allData.forEach((video)=>{
+   console.log(video)
+   let videosDiv = document.createElement('div')
+     videosDiv.innerHTML= `
+     <div class="card w-64 bg-base-100 relative  shadow-xl">
+     <figure><img class="w-64  md:w-80 lg:w-full     h-48"
+         src=${video?.thumbnail}
+         alt="Shoes"
+       /></figure>
+       <p class="absolute right-2 top-40 bg-black text-white"  > ${video.others.posted_date?secondsToHoursMinutes(video.others.posted_date): ''}</p>
+     <div class="card-body flex ">
+         <div class="flex flex-row gap-1">
+             <div>
+                 <div>
+                     <div class="avatar ">
+                       <div class="w-14 rounded-full">
+                         <img
+                           src=${video.authors[0]?.profile_picture}
+                         />
+                       </div>
+                     </div>
+                   </div>
+             </div>
+           <h2 class="card-title">
+             ${video.title}
+             
+           </h2>
+
+         </div>
+          <div >
+            <div class="flex flex-row  ">
+                 <h6> ${video.authors[0]?.profile_name}</h6>
+                ${video.authors[0]?.verified ==true?"<img src='fi_10629607.svg'/>" : '' }
+                
+             </div>
+             <p>${video.others.views} </p>
+           </div>  
+        </div>
+   </div>
+     `
+
+    
+cardContainer.appendChild(videosDiv);
+
+
+  });
+  
+  }
+  
+
+
+
+
+loadCategories()
+loadVideos('1000')

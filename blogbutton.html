@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update the Blog_Button</title>
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+     
+     <style>
+         .Inter{
+             font-family: 'Inter', sans-serif;;
+         }
+     </style>
+</head>
+<body>
+   
+          
+         <div class="hero mt-8 max-w-4xl md:max-w-6xl   lg:max-w-6xl    mx-auto  h-96    " style="background-image: url('https://play-lh.googleusercontent.com/oBK6ySb3tTH_RlvObmrGT40P_Pc6dw6mZCN9zqP35rJtrvWk6jtHtp0ohVzTNsOb5A=w3840-h2160-rw');">
+            <div class="hero-overlay bg-opacity-40"></div>
+            <div class="hero-content text-center text-neutral-content">
+              <div class="max-w-md">
+                <h1 class="mb-20 text-7xl font-bold  bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent  ">BLOG</h1>
+               
+                
+              </div>
+            </div>
+          </div>
+
+         <main>
+
+         </main>
+
+
+     <div class="mt-8  max-w-6xl mx-auto   bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 grid grid-cols-1  "   >
+        <div class="mt-8 p-10  " >
+            <h1 class="text-4xl text-white font-semibold pb-3">Discuss about the scope of var, let, and const</h1>
+            <p class="text-2xl text-white "><span class="text-3xl">var</span> declarations are globally scoped or function scoped .var variables can be updated and re-declared within its scope.var can be re-declared multiple times using var key word and same variable name.as it is global scoped,Value of variable declared using var can be updated anywhere within the scope.
+                <span class="text-3xl">let,const</span> are block scoped.let variables can be updated but not re-declared . though const variable is block scoped,but can't be updated or re-declared</p>
+        </div>
+     
+        <div class=" p-10 mb-8 ">
+            <h1 class="text-4xl  text-white font-semibold pb-3">Tell us the use cases of null and undefined</h1>
+            <p class="text-2xl text-white "><span class="text-3xl">undefined</span> means a variable has been declared but has not yet been assigned a value. undefined is a type by itself (undefined). Unassigned variables are initialized by JavaScript with a default value of undefined.</p>
+            <div  class="flex items-center    mt-4 pl-30 mb-4  ">
+                <img src="./images/undefined.png" alt="">
+
+            </div>
+            <p class="text-2xl text-white ">Here as the variable is declared but not assigned to any value, the variable by default is assigned a value of undefined.
+                On the other hand, null is an object. It can be assigned to a variable as a representation of no value.
+                For example, when you do not know the value initially you can assign a null to a variable. Let's see an example.
+            </p>
+            <div class=" max-w-6xl h-20 mt-4 pl-30 mb-24 ">
+               
+            <img src="./images/null.png" alt="">
+            </div>
+        </div>
+        
+        <div class="mt-20 p-10 mb-4 ">
+            <h1 class="text-4xl text-white font-semibold pb-3">Do you mean by REST API?</h1>
+            <p class="text-2xl text-white ">
+                <span class="text-3xl">An API, or application programming interface,</span> is a set of rules that define how applications or devices can connect to and communicate with each other. A REST API is an API that conforms to the design principles of the REST, or representational state transfer architectural style. For this reason, REST APIs are sometimes referred to RESTful APIs.
+                First defined in 2000 by computer scientist Dr. Roy Fielding in his doctoral dissertation, REST provides a relatively high level of flexibility and freedom for developers. This flexibility is just one reason why REST APIs have emerged as a common method for connecting components and applications in a microservices architecture.
+
+                How REST APIs work:
+                REST APIs communicate via HTTP requests to perform standard database functions like creating, reading, updating, and deleting records (also known as CRUD) within a resource. For example, a REST API would use a GET request to retrieve a record, a POST request to create one, a PUT request to update a record, and a DELETE request to delete one. All HTTP methods can be used in API calls. A well-designed REST API is similar to a website running in a web browser with built-in HTTP functionality.</p>
+        </div>
+       
+
+    </div>
+
+
+    
+</body>
+</html>
